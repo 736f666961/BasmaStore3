@@ -11,7 +11,7 @@ import { map } from 'rxjs/operators';
 })
 export class ProductService {
 
-  private baseUrl = 'http://localhost:8080/api/products';
+  private baseUrl = 'http://localhost:8080/api/products?size=100';
 
   constructor(private httpClient: HttpClient) { }
 //Map the JSON data from spring data rst to product array
@@ -21,7 +21,7 @@ export class ProductService {
     );
   }
 }
-// Unwraps the JSON from spring data rest
+// Unwraps the JSON from spring data rest_embedded entry
 interface GetResponse {
   _embedded: {
     products: Product[];
