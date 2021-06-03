@@ -11,13 +11,15 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
-
+  //
   products: Product[];
   currentCategoryId: number;
- // DI of productService and the current active route that loaded the component. useful for accessing route parameters
+  // DI of productService and the current active route that loaded the component.
+  // useful for accessing route parameters
   constructor(private productService: ProductService,
               private route: ActivatedRoute) { }
   // like @postConstruct called once the given component is initialized
+  // add the hook to call my list of product
   ngOnInit() {
     this.route.paramMap.subscribe(() => {
       this.listProducts();
@@ -30,6 +32,7 @@ export class ProductListComponent implements OnInit {
 
     if (hasCategoryId) {
       // get the "id" param string. convert string to a number using the "+" symbol
+      // id is {path: 'category/:id'
       this.currentCategoryId = +this.route.snapshot.paramMap.get('id');
     } else {
       // not category id available ... default to category id 1
@@ -39,6 +42,7 @@ export class ProductListComponent implements OnInit {
     // now get the products for the given category id
     this.productService.getProductList(this.currentCategoryId).subscribe(
       data => {
+        // assign results to the products array
         this.products = data;
       }
     );

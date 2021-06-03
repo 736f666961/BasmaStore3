@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProductService } from './services/product.service';
 
 import { Routes, RouterModule} from '@angular/router';
+import {ProductCategoryMenuComponent} from './components/product-category-menu/product-category-menu.component';
 // order of routes is important first match wins, start from specific to more generic
 const routes: Routes = [
   // when path match, create a new instance of ProductListComponent
@@ -17,11 +18,11 @@ const routes: Routes = [
   {path: '**', redirectTo: '/products', pathMatch: 'full'}
 ];
 
-
 @NgModule({
   declarations: [
     AppComponent,
-    ProductListComponent
+    ProductListComponent,
+    ProductCategoryMenuComponent
   ],
   imports: [
     // configure router based on our route
@@ -29,6 +30,7 @@ const routes: Routes = [
     BrowserModule,
     HttpClientModule
   ],
+  // let me inject product service into other class of our app
   providers: [ProductService],
   bootstrap: [AppComponent]
 })

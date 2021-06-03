@@ -1,5 +1,5 @@
 package com.luv2code.ecommerce.config;
-
+// configure Rest Api for read only
 import com.luv2code.ecommerce.entity.Product;
 import com.luv2code.ecommerce.entity.ProductCategory;
 import org.springframework.context.annotation.Configuration;
@@ -24,7 +24,8 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
     @Override
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config) {
 
-        HttpMethod[] theUnsupportedActions = {HttpMethod.PUT, HttpMethod.POST, HttpMethod.DELETE, HttpMethod.PATCH};
+        HttpMethod[] theUnsupportedActions = {HttpMethod.PUT, HttpMethod.POST,
+                                               HttpMethod.DELETE, HttpMethod.PATCH};
 
         // disable HTTP methods for Product: PUT, POST, DELETE and PATCH
         config.getExposureConfiguration()
